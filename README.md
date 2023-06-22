@@ -1,5 +1,5 @@
 # Test-For-My-Senior
--INSTRUCTIONS FROM MY SENIOR
+- INSTRUCTIONS FROM MY SENIOR
 
 Write me button component library
 I should be able to use the same button component anywhere and pass a variation prop to it
