@@ -20,7 +20,7 @@
     },
     {
       "src": "^/static/(.*)",
-      "dest": "/src/"
+      "dest": "/src/components/$1"
     },
     {
       "src": "/(.*)\\.png",
@@ -28,7 +28,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/client/index.html"
+      "dest": "/src/app.tsx"
     }
   ]
 }
