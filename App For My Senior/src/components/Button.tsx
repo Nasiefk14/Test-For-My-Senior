@@ -15,15 +15,15 @@ const Button = (props: IButton) => {
 
   const buttonClass = `${
     variationType.toLowerCase() === "primary"
-      ? "bg-[#0d6efd] bg-opacity-80  hover:bg-opacity-100 hover:text-white text-black"
+      ? "bg-[#0d6efd] bg-opacity-80  hover:bg-opacity-100 hover:text-white"
       : variationType.toLowerCase() === "secondary"
-      ? "bg-[#6c757d] bg-opacity-80  hover:bg-opacity-100 hover:text-white text-black"
+      ? "bg-[#6c757d] bg-opacity-80  hover:bg-opacity-100 hover:text-white"
       : variationType.toLowerCase() === "warning"
-      ? "bg-[#ffc107] bg-opacity-80  hover:bg-opacity-100 hover:text-white text-black"
+      ? "bg-[#ffc107] bg-opacity-80  hover:bg-opacity-100 hover:text-white"
       : variationType.toLowerCase() === "danger"
-      ? "bg-[#dc3545] bg-opacity-80  hover:bg-opacity-100 hover:text-white text-black"
+      ? "bg-[#dc3545] bg-opacity-80  hover:bg-opacity-100 hover:text-white"
       : "bg-gray-300"
-  } w-[150px] h-[50px] border-2 border-gray-950 text-2xl m-2 font-bold rounded-lg text-white`;
+  } w-[150px] h-[50px] border-2 border-gray-950 text-2xl m-2 font-bold rounded-lg text-black`;
 
   return (
     <button onClick={handleClick} className={buttonClass}>
