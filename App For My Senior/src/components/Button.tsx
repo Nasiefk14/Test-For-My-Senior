@@ -1,11 +1,4 @@
-import { IButton } from "../interfaces/interfaces";
-
-enum ButtonVariation {
-  Primary = "primary",
-  Secondary = "secondary",
-  Warning = "warning",
-  Danger = "danger",
-}
+import { ButtonVariation, IButton } from '../types/index';
 
 const Button = (props: IButton) => {
   const buttonText = props.buttonText;

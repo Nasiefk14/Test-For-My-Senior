@@ -4,8 +4,8 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import ButtonShowcase from '../pages/ButtonShowcase';
-import { ITabPanelProps } from '../interfaces/interfaces';
-import Input from './Input';
+import { ITabPanelProps } from '../types/interfaces/interfaces';
+import DebouncedInput from './DebouncedInput';
 
 function TabPanel({ children, value, index, ...other }: ITabPanelProps) {
   const hidden = value !== index;
@@ -48,7 +48,7 @@ export default function Navbar() {
         <ButtonShowcase />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Input />
+        <DebouncedInput />
       </TabPanel>
       <TabPanel value={value} index={2}>
         Task Three

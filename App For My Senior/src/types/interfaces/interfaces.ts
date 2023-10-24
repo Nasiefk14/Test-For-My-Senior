@@ -8,3 +8,4 @@ export interface ITabPanelProps {
     index: number;
     value: number;
   }
+
