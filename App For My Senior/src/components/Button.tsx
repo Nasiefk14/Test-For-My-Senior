@@ -1,29 +1,48 @@
 import { IButton } from "../interfaces/interfaces";
 
+enum ButtonVariation {
+  Primary = "primary",
+  Secondary = "secondary",
+  Warning = "warning",
+  Danger = "danger",
+}
+
 const Button = (props: IButton) => {
-  const validVariations = ["primary", "secondary", "warning", "danger"];
-  const variationType = props.variation || "primary";
   const buttonText = props.buttonText;
+  const variationType = props.variation || ButtonVariation.Primary;
 
   const handleClick = () => {
-    if (!validVariations.includes(variationType.toLowerCase())) {
+    if (!(variationType in ButtonVariation)) {
       alert(`An Unknown Button Was Clicked!`);
     } else {
       alert(`${variationType} Button Was Clicked!`);
     }
   };
 
-  const buttonClass = `${
-    variationType.toLowerCase() === "primary"
-      ? "bg-[#0d6efd] bg-opacity-80  hover:bg-opacity-100 hover:text-white"
-      : variationType.toLowerCase() === "secondary"
-      ? "bg-[#6c757d] bg-opacity-80  hover:bg-opacity-100 hover:text-white"
-      : variationType.toLowerCase() === "warning"
-      ? "bg-[#ffc107] bg-opacity-80  hover:bg-opacity-100 hover:text-white"
-      : variationType.toLowerCase() === "danger"
-      ? "bg-[#dc3545] bg-opacity-80  hover:bg-opacity-100 hover:text-white"
-      : "bg-gray-300"
-  } w-[150px] h-[50px] border-2 border-gray-950 text-2xl m-2 font-bold rounded-lg text-black`;
+  let buttonClass = "";
+  switch (variationType.toLowerCase()) {
+    case ButtonVariation.Primary: {
+      buttonClass = "bg-[#0d6efd]";
+      break;
+    }
+    case ButtonVariation.Secondary: {
+      buttonClass = "bg-[#6c757d]";
+      break;
+    }
+    case ButtonVariation.Warning: {
+      buttonClass = "bg-[#ffc107]";
+      break;
+    }
+    case ButtonVariation.Danger: {
+      buttonClass = "bg-[#dc3545]";
+      break;
+    }
+    default: {
+      buttonClass = "bg-gray-300";
+      break;
+    }
+  }
+  buttonClass += " w-[150px] h-[50px] border-2 border-gray-950 text-2xl m-2 font-bold rounded-lg text-black  bg-opacity-80  hover:bg-opacity-100 hover:text-white";
 
   return (
     <button onClick={handleClick} className={buttonClass}>
