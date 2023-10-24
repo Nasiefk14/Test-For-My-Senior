@@ -42,7 +42,7 @@ const Button = (props: IButton) => {
       break;
     }
   }
-  buttonClass += " w-[150px] h-[50px] border-2 border-gray-950 text-2xl m-2 font-bold rounded-lg text-black  bg-opacity-80  hover:bg-opacity-100 hover:text-white";
+  buttonClass += " w-[150px] h-[50px] border-2 border-gray-950 text-2xl m-2 font-bold rounded-lg text-white  bg-opacity-100  hover:bg-opacity-80 hover:text-black";
 
   return (
     <button onClick={handleClick} className={buttonClass}>
