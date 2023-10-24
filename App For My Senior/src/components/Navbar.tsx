@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import ButtonShowcase from '../pages/ButtonShowcase';
 import { ITabPanelProps } from '../interfaces/interfaces';
+import Input from './Input';
 
 function TabPanel({ children, value, index, ...other }: ITabPanelProps) {
   const hidden = value !== index;
@@ -12,7 +13,7 @@ function TabPanel({ children, value, index, ...other }: ITabPanelProps) {
   return (
     <div role="tabpanel" hidden={hidden} id={`simple-tabpanel-${index}`} aria-labelledby={`simple-tab-${index}`} {...other}>
       {hidden ? null : (
-        <Box sx={{ p: 3 }}>
+        <Box className="p-4">
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -35,22 +36,22 @@ export default function Navbar() {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+    <Box className="w-full">
+      <Box className="border-b-2 border-gray-300">
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="Task One" {...a11yProps(0)} />
+          <Tab label="Task Two" {...a11yProps(1)} />
+          <Tab label="Task Three" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
         <ButtonShowcase />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <Input />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        Task Three
       </TabPanel>
     </Box>
   );
