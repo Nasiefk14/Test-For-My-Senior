@@ -1,26 +1,57 @@
-import task from '../assets/tasks.png'
+import * as React from 'react';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import ButtonShowcase from '../pages/ButtonShowcase';
+import { ITabPanelProps } from '../interfaces/interfaces';
 
-const Navbar = () => {
+function TabPanel({ children, value, index, ...other }: ITabPanelProps) {
+  const hidden = value !== index;
+
   return (
-    <>
-      <nav className="fixed w-full h-[100px] flex justify-between items-center px-4 bg-[#cee0f3] ">
-        <div className="logo">
-          <img src={task} alt="None" className="w-24" />
-        </div>
-        <ul className="flex">
-          <li className="hover:text-[#5CDB95] w-26 m-5 text-1xl">
-            <a href={`/task-one`}>Task 1</a>
-          </li>
-          <li className="hover:text-[#5CDB95] w-26 m-5 text-1xl">
-            <a href={`/task-2`}>Task 2</a>
-          </li>
-          <li className="hover:text-[#5CDB95] w-26 m-5 text-1xl">
-            <a href={`/task-3`}>Task 3</a>
-          </li>
-        </ul>
-      </nav>
-    </>
+    <div role="tabpanel" hidden={hidden} id={`simple-tabpanel-${index}`} aria-labelledby={`simple-tab-${index}`} {...other}>
+      {hidden ? null : (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
   );
-};
+}
 
-export default Navbar;
+function a11yProps(index: number) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
+export default function Navbar() {
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
+
+  return (
+    <Box sx={{ width: '100%' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          <Tab label="Item One" {...a11yProps(0)} />
+          <Tab label="Item Two" {...a11yProps(1)} />
+          <Tab label="Item Three" {...a11yProps(2)} />
+        </Tabs>
+      </Box>
+      <TabPanel value={value} index={0}>
+        <ButtonShowcase />
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        Item Two
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        Item Three
+      </TabPanel>
+    </Box>
+  );
+}
