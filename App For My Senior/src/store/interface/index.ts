@@ -1,16 +1,23 @@
-import { Action } from "easy-peasy";
+import {Action,
+    Actions,
+    State,
+Thunk,
+} from "easy-peasy";
 
-export interface IItem {
-    id: string;
-    item: string
+export interface Todo {
+    text: string;
+  }
+  
+  export interface TodosModel {
+    todos: Todo[];
+    addTodo: Action<this, Todo>;
+    saveTodos: Thunk<this, Todo[]>;
+  }
+
+  export interface TodoActions extends Actions<{}> {
+    addTodo: (todo: { text: string }) => void;
+  }
+  
+  export interface StoreState extends State {
+    todos: Todo[];
 }
-
-export interface ITodo{
-    items: IItem[];
-
-    setItem: Action<ITodo, string>;
-    removeItem: Action<ITodo, string>;
-    updateItem: Action<ITodo, IItem>;
-}
-
-export interface StoreModel extends ITodo{}

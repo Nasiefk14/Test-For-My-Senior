@@ -1,28 +1,16 @@
-import { action } from "easy-peasy";
-import { ITodo } from "../interface";
+import { action, thunk } from "easy-peasy";
+import { TodosModel } from "../interface";
 
-const todo: ITodo = {
-  items: [
-    {
-      id: "1",
-      item: "Default item",
-    },
-  ],
-  setItem: action((state, payload) => {
-    const item = { id: new Date().getMilliseconds().toString(), item: payload };
-    state.items.push(item);
+const todosStore: TodosModel = {
+  todos: [],
+  addTodo: action((state, payload) => {
+    state.todos.push(payload);
   }),
-  removeItem: action((state, payload) => {
-    state.items = state.items.filter((item) => item.id !== payload);
-  }),
-  updateItem: action((state, payload) => {
-    state.items = state.items.map((item) => {
-      if (item.id === payload.id) {
-        return payload;
-      }
-      return item;
-    });
+  saveTodos: thunk((_actions, todosToSave) => {
+    console.log(
+      `Imagine were sending ${todosToSave.length} todos to a remote server..`
+    );
   }),
 };
 
-export default todo;
+export default todosStore;
