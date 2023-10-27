@@ -1,13 +1,33 @@
+import { useStoreActions } from "easy-peasy";
+import { useState, useEffect } from "react";
+import { TodoActions } from "../store/interface";
+import _ from "lodash";
 
 const DebouncedInput = () => {
+  const [todoText, setTodoText] = useState("");
+  const { addTodo } = useStoreActions<TodoActions>((actions) => actions);
+  const debouncedAddTodo = _.debounce(addTodo, 500);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (todoText.length > 0) {
+        debouncedAddTodo({ text: todoText });
+        setTodoText("");
+      }
+    }, 500);
+
+    return () => clearTimeout(timeoutId);
+  }, [todoText, debouncedAddTodo]);
+
   return (
-    <div className="w-[60%] h-screen m-auto text-center">
-        <h1 className="text-center text-3xl font-bold">Insert Your Text Below</h1>
-        <h3 className="text-center mb-5">Have Your Test Set After 500ms</h3>
+      <input
+        className="p-[15px] border-2"
+        type="text"
+        placeholder="Enter Text..."
+        value={todoText}
+        onChange={(e) => setTodoText(e.target.value)}
+      />
+  );
+};
 
-        <input type="text" placeholder="Enter Text..." className="p-[15px] border-2"/>
-    </div>
-  )
-}
-
-export default DebouncedInput
+export default DebouncedInput;
