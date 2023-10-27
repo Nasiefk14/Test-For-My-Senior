@@ -9,3 +9,8 @@ export interface ITabPanelProps {
     value: number;
   }
 
+export interface ICocktail {
+  idDrink: string;
+  strDrink: string;
+  strDrinkThumb: string;
+}

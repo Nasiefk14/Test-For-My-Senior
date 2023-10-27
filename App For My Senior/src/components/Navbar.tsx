@@ -8,6 +8,7 @@ import { ITabPanelProps } from "../types/interfaces/interfaces";
 import DebounceShowcase from "../pages/DebounceShowcase";
 import { StoreProvider } from "easy-peasy";
 import store from "../store";
+import CocktailListShowcase from "../pages/CocktailListShowcase";
 
 function TabPanel({ children, value, index, ...other }: ITabPanelProps) {
   const hidden = value !== index;
@@ -60,10 +61,12 @@ export default function Navbar() {
         <ButtonShowcase />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <StoreProvider store={store}><DebounceShowcase /></StoreProvider>
+        <StoreProvider store={store}>
+          <DebounceShowcase />
+        </StoreProvider>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Task Three
+        <CocktailListShowcase />
       </TabPanel>
     </Box>
   );
