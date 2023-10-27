@@ -6,11 +6,6 @@ const todosStore: TodosModel = {
   addTodo: action((state, payload) => {
     state.todos.push(payload);
   }),
-  saveTodos: thunk((_actions, todosToSave) => {
-    console.log(
-      `Imagine were sending ${todosToSave.length} todos to a remote server..`
-    );
-  }),
 };
 
 export default todosStore;

@@ -1,4 +1,4 @@
-import { Action, Actions, State, Thunk } from "easy-peasy";
+import { Action, Actions, State } from "easy-peasy";
 
 export interface Todo {
   text: string;
@@ -7,7 +7,6 @@ export interface Todo {
 export interface TodosModel {
   todos: Todo[];
   addTodo: Action<this, Todo>;
-  saveTodos: Thunk<this, Todo[]>;
 }
 
 export interface TodoActions extends Actions<{}> {

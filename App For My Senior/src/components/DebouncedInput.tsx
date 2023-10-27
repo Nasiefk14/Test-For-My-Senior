@@ -20,7 +20,6 @@ const DebouncedInput = () => {
   }, [todoText, debouncedAddTodo]);
 
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
       <input
         className="p-[15px] border-2"
         type="text"
@@ -28,7 +27,6 @@ const DebouncedInput = () => {
         value={todoText}
         onChange={(e) => setTodoText(e.target.value)}
       />
-    </form>
   );
 };
 
