@@ -1,7 +1,7 @@
 import { useStoreActions } from "easy-peasy";
-import _ from "lodash";
 import { useState, useEffect } from "react";
 import { TodoActions } from "../store/interface";
+import _ from "lodash";
 
 const DebouncedInput = () => {
   const [todoText, setTodoText] = useState("");
