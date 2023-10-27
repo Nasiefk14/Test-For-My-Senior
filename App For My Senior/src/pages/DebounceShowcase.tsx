@@ -1,5 +1,5 @@
 import { useStoreState } from "easy-peasy";
-import { StoreState, Todo }from "../store/interface";
+import { StoreState, Todo } from "../store/interface";
 import DebouncedInput from "../components/DebouncedInput";
 
 const DebounceShowcase = () => {
