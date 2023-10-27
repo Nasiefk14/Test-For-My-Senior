@@ -1,5 +1,5 @@
-import { useStoreState, State } from "easy-peasy";
-import { StoreState, Todo } from "../store/interface";
+import { useStoreState } from "easy-peasy";
+import { StoreState, Todo }from "../store/interface";
 import _ from "lodash";
 import DebouncedInput from "../components/DebouncedInput";
 
